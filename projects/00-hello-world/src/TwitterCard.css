@@ -1,0 +1,42 @@
+
+
+.twitter-card-root{
+
+    background-color: #1f1f1f;
+    display: flex;
+    color:white;
+    font-family: "system-ui";
+    justify-content: stretch;
+    align-items: center;
+    border-radius: 1em;
+    padding: 0.3rem;
+    gap: 1rem;
+}
+
+.twitter-card-header{
+    display: flex;
+    border: 1px solid red;
+    justify-content: stretch;
+    align-items: center;
+}
+
+.twitter-card-profile-pic{
+    border-radius: 100%;
+    max-width: 3rem;
+    padding: 1em;
+}
+
+.twitter-card-header-name{
+    text-decoration: aqua underline;
+
+}
+
+.twitter-card-header-username{
+    color: teal;
+}
+
+.twitter-following-button{
+    padding: 1em;
+    border-radius: 2em;
+
+}
