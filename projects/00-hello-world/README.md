@@ -1,8 +1,13 @@
-# React + Vite
+# 00-Hello-World
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Card mimicking twitter recommendation profiles to follow
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Concepts applied
+- basic rendering of the app from an HTML root using `ReactDOM.createRoot()`
+- creating a component as a separate file `TwitterCard.jsx`
+- styling a component using eternal css
+- passing props to a component from other components
+- `useState` hook basics to update the button look
+
+![showcase.gif](media%2Fshowcase.gif)

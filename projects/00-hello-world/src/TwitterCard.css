@@ -1,42 +1,90 @@
 
+twitter-* {
+    font-family: "system-ui";
+}
 
-.twitter-card-root{
+.twitter-card-root {
 
     background-color: #1f1f1f;
     display: flex;
-    color:white;
-    font-family: "system-ui";
-    justify-content: stretch;
+    color: white;
+
+    justify-content: space-between;
     align-items: center;
+
     border-radius: 1em;
-    padding: 0.3rem;
-    gap: 1rem;
+    padding: 0.2rem 1rem;
+    gap: 10px;
+
 }
 
-.twitter-card-header{
+.twitter-card-header {
     display: flex;
-    border: 1px solid red;
-    justify-content: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
+
 }
 
-.twitter-card-profile-pic{
+.twitter-card-profile-pic {
     border-radius: 100%;
-    max-width: 3rem;
-    padding: 1em;
+    width: 50px;
+    padding: 2px
 }
 
-.twitter-card-header-name{
-    text-decoration: aqua underline;
+
+.twitter-names-div {
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.twitter-card-header-name {
 
 }
 
-.twitter-card-header-username{
-    color: teal;
+.twitter-card-header-username {
+    color: #ababab;
 }
 
-.twitter-following-button{
-    padding: 1em;
+.twitter-following-button {
+    font-family: "system-ui";
+    padding: 0.7em 0.9em;
     border-radius: 2em;
-
+    font-weight: bold;
+    border: 1px solid #ababab;
+    color: white;
+    background: #1f1f1f;
 }
+
+.twitter-following-button:hover {
+    background-color: #718181;
+    transition: 0.3s ease all;
+}
+
+
+.twitter-following-button:hover.status-following {
+    background-color: #1e1e1e;
+    border: #9d2727 1px solid;
+    color: #bb0909;
+}
+
+
+/* By default hot the "unfollow" message won't show */
+.twitter-following-button .unfollow-show {
+    display: none;
+}
+
+/* Hide the "base following message" to display "unfollow" */
+.twitter-following-button:hover.status-following .default-show {
+    display: none;
+}
+
+
+/* On-hover "unfollow" message display" */
+.twitter-following-button:hover.status-following .unfollow-show {
+    display: block;
+}
+
