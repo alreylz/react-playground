@@ -1,13 +1,23 @@
 {
   "name": "react-playground",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Set of simple projects used to learn and practice React",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "update:readme": "node --no-warnings ./autoReadme.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "vite": "^3.2.3"
   },
   "keywords": [],
-  "author": "",
+  "author": "@alreylz | alreylop@gmail.com",
   "license": "ISC"
 }
