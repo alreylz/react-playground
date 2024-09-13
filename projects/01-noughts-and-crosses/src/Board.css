@@ -1,0 +1,16 @@
+.nc-board {
+
+
+    width:min-content;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #466486;
+
+
+    display: grid;
+    gap: 10px;
+
+
+    justify-content: center;
+    align-content: center;
+}
