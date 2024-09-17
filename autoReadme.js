@@ -19,6 +19,7 @@ const basicContent = "# React Playground 🕹️🗒️";
 
 
 
+
     // Write to the Readme
     await fs.writeFile('./README.md', content, 'utf8');
 

@@ -1,0 +1,25 @@
+
+
+
+.fi-root{
+
+    background-color: teal;
+    border-radius: 1em;
+
+    padding: 1em;
+    text-align: center;
+}
+
+
+
+
+.fi-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fi-header img{
+
+    max-width: 300px;
+}
