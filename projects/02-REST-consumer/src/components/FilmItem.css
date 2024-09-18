@@ -1,25 +1,156 @@
+.fi-root {
+
+    background-image: url("/film.png");
+    background-repeat: no-repeat;
+    background-size: 900px 100%;
+
+    border-radius: 10px;
+    color: #eaeaea;
+
+    padding: 2rem 1rem;
+    text-align: left;
+
+    border: #eaeaea solid 0.1rem;
+    box-shadow: 0 10px 50px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+
+    min-width:  min-content;
+    max-width: 60vw;
+    margin:1rem auto;
+}
 
 
 
-.fi-root{
-
-    background-color: teal;
-    border-radius: 1em;
-
-    padding: 1em;
-    text-align: center;
+.fi-root:hover {
+    animation: 0.2s hoverCard forwards ease-in-out;
 }
 
 
 
 
-.fi-header{
+
+.fi-header {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+
 }
 
-.fi-header img{
+.fi-header>* {
+    margin: 0.5rem 0;
+}
 
-    max-width: 300px;
+.fi-h1 {
+    font-size: large;
+}
+
+.fi-h2 {
+    font-size: small;
+}
+
+.fi-header img {
+    align-self: center;
+    max-width: min(90%, 300px);
+}
+
+
+.fi-description {
+
+    animation: 0.5s fadeIn forwards ease-in;
+    font-size: 0.9rem;
+    padding: 1ex;
+    backdrop-filter: blur(40px);
+    border: white 1px solid;
+}
+
+
+
+
+
+.fi-root button {
+    background-color: blanchedalmond;
+    border:1px solid #eaeaea;
+    border-radius: 10px;
+
+}
+
+
+.fi-edition-button-group {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+
+}
+
+
+
+/* Edit form */
+.fi-root[data-status="edit"]{
+    display: flex;
+    flex-direction: column;
+}
+
+.fi-root[data-status="edit"] input, .fi-root[data-status="edit"] input textarea{
+    inset:none;
+    outline:none;
+
+    border: 0.1rem rgb(198, 198, 198) solid;
+    background-color: rgb(224, 224, 224);
+    border-radius: 2px;
+    padding: 0.3em;
+}
+
+.fi-root[data-status="edit"] input:hover, 
+.fi-root[data-status="edit"] textarea:hover,
+.fi-root[data-status="edit"] input:focus, 
+.fi-root[data-status="edit"] textarea:focus
+{
+    color: rgb(0, 0, 0);
+    
+    border: 1px rgb(41, 114, 156) solid;
+    background-color: rgb(235, 235, 235);
+    
+}
+
+
+.fi-root textarea{
+    min-height: 5rem;
+    resize: none;
+    overflow: auto;
+    padding: 1em;
+    border: 1px solid #888; 
+}
+
+
+
+
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        translate: -10px;
+
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes hoverCard {
+    from {
+        scale: 100%;
+    }
+
+    to {
+        scale: 102%;
+        border: #ffebc7 solid 0.2rem;
+        /* -webkit-box-shadow: 10px 10px 34px 4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 34px 4px rgba(0, 0, 0, 0.75); */
+        box-shadow: 0px 10px 10px 4px rgba(0, 0, 0, 0.336);
+    }
 }

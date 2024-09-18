@@ -6,7 +6,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
-let usersdb = [
+let filmsdb = [
     {
         id: 1,
         name: "Le Fabuleux Destin d'Amelie Poulain",
@@ -36,45 +36,62 @@ let usersdb = [
     }
 ]
 
+let nextId = filmsdb.length+1;
 
-app.get('/users', async (req, res) => {
 
-    console.log('GET request to /users')
 
-    console.log("Elems in db: " + usersdb.length)
+app.get('/films', async (req, res) => {
 
-    res.status(200).json(usersdb)
+    console.log('GET request to /films 🎥')
 
-});
+    console.log("Elems in db: " + filmsdb.length)
 
-app.put('/users', async (req, res) => {
-
-    console.log('PUT request to /users')
-    const userIndex = usersdb.findIndex((user) => { user.id === req.body.id })
-
-    usersdb[userIndex] = req.body;
-
-    console.log("changed film to ", usersdb[userIndex])
-    console.log("Elems in db: " + usersdb.length)
-
-    res.status(200).json(usersdb[userIndex])
+    res.status(200).json(filmsdb)
 
 });
 
+app.post('/films', async (req, res) => {
+
+    console.log('POST request to /films 🎥')
+
+    
+    const newFilm = {id:nextId++, ...req.body} 
+
+    filmsdb.push(newFilm);
+    console.log("Created new film ", newFilm)
+    console.log("Elems in db: " + filmsdb.length)
 
 
-app.delete('/users', async (req, res) => {
+    res.status(200).json(newFilm)
+
+});
+
+app.put('/films', async (req, res) => {
+
+    console.log('PUT request to /films 🎥')
+    const userIndex = filmsdb.findIndex((user) => { user.id === req.body.id })
+
+    filmsdb[userIndex] = req.body;
+
+    console.log("changed film to ", filmsdb[userIndex])
+    console.log("Elems in db: " + filmsdb.length)
+
+    res.status(200).json(filmsdb[userIndex])
+
+});
 
 
-    console.log('DELETE request to /users')
-    usersdb = usersdb.filter((elem) => elem.id != req.body.id)
 
-    console.log("Elems in db: " + usersdb.length)
+app.delete('/films', async (req, res) => {
+
+
+    console.log('DELETE request to /films 🎥')
+    filmsdb = filmsdb.filter((elem) => elem.id != req.body.id)
+
+    console.log("Elems in db: " + filmsdb.length)
     res.status(200).json(req.body)
 
 });
-
-
 
 
 

@@ -1,5 +1,56 @@
 
 
+h1{
+    text-align: center;
+    color: #000000;
+}
+
 section{
     margin: 1em 0;
+}
+
+
+.film-list-container{
+   
+    margin: 100px;
+        
+}
+
+
+
+
+
+.fi-create-form{
+    min-width:  min-content;
+    max-width: 60vw;
+    margin: 0 auto;
+    background-color: #3e3e3f;
+    display: flex;
+    flex-direction: column;
+    gap:0.4em;
+    padding: 1rem;
+    border-radius: 1rem;
+    align-items: left;
+
+}
+
+.fi-create-form header{
+    font-size: larger;
+    margin-bottom: 3px;
+    border-bottom: #e8e8e8 3px solid;
+}
+
+
+.fi-create-form label{
+
+}
+
+
+.fi-create-form button{
+    align-self: flex-end;
+    
+}
+.fi-create-form input, .fi-create-form textarea{
+
+padding: 1ex;
 }

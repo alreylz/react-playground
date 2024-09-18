@@ -1,6 +1,6 @@
 
 import MyList from "./components/MyList"
-
+import './App.css'
 
 const App = ({name}) =>{
     return (<>

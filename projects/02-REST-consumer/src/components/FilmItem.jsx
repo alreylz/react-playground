@@ -57,44 +57,56 @@ const FilmItem = ({ film, handleRemove, handleEdit, initialMode = "read" }) => {
                 <section className='fi-root'>
                     <header className="fi-header">
                         <img src={film.imgSrc} alt={film.name + " poster"} />
-                        <h1 className="fi-title"> {film.name}  ({film.year})</h1>
-                        <h2>Directed by {film.director}</h2>
+                        <strong className="fi-h1"> 
+                            <span className="fi-header-name-txt">{film.name}</span>  <span className="fi-header-year-txt">({film.year})</span>
+                        </strong>
+                        <strong className="fi-h2">
+                            Directed by <span className="fi-header-director">{film.director}</span>
+                        </strong>
                     </header>
+                    
                     <button onClick={() => {
-                        console.log("clicked")
                         setShowDetails(!showDetails)
-                    }}> Know more</button>
+                    }}> Know more ➕</button>
 
-                    {showDetails && (<p>
+                    {showDetails && (<p className="fi-description">
                         {film.description}
                     </p>)}
 
-                    <button onClick={handleRemove}> Remove 🗑️</button>
-                    <button onClick={() => setMode("edit")} > Edit ✏️</button >
-
+                    <div className="fi-edition-button-group">
+                        <button onClick={() => setMode("edit")} > Edit ✏️</button >
+                        <button onClick={handleRemove}> Remove 🗑️</button>
+                    </div>
                 </section>
 
             </>
             )
         case "edit":
             return (
-                <section className='fi-root'>
+                <section className='fi-root' data-status="edit" >
                     <header className="fi-header">
                         <img src={film.imgSrc} alt={film.name + " poster"} />
+                        <label>Title</label>
                         <input type="text" name="name" onChange={handleFormDataValue} className="fi-title" defaultValue={formData["name"]} />
+                        <label>Year</label>
+                        <input type="number" name="year" onChange={handleFormDataValue} className="fi-title" defaultValue={formData["year"]} />
+                        <label>Director</label>
+                        <input type="text" name="director" onChange={handleFormDataValue} className="fi-title" defaultValue={formData["director"]} />
                     </header>
-
+                    <label>Description</label>
                     {<textarea name='description' onBlur={handleFormDataValue} defaultValue={formData["description"]}></textarea>}
-                    <button onClick={handleRemove}>Remove 🗑️</button>
-                    <button onClick={async () => {
-                        const success = await handleEdit(formData);
-                        if (!success) {
-                            console.log("Error in the remote applying of changes")
-                            return;
-                        }
+                    
+                    <div className="fi-edition-button-group">
+                    <button onClick={()=>setMode("read")}>🔙</button>
+                    
+                    <button onClick={() => {
+                        handleEdit(formData);
+                        console.log("should change mode");
                         setMode("read");
-                    }}> Confirm Edition</button>
+                    }}> Confirm Edition ✅</button>
+                    <button onClick={handleRemove}>Remove 🗑️</button>
 
+                    </div>
                 </section>
             )
         default:
