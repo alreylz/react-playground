@@ -1,0 +1,24 @@
+.RadarChart {
+    --area-color: rgb(68, 195, 46);
+    --grid-line-color: black;
+    --axis-line-color: var(var(--grid-line-color), black);
+
+
+
+    --grid-bg:gray;
+    --bg:transparent;
+
+
+    --datapoints-color:rgb(85, 85, 129);
+    --polygon-color:rgba(205, 235, 36, 0.629);
+
+
+    width: 100%;
+    aspect-ratio: 1;
+
+    svg{
+        transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+    }
+
+
+}
