@@ -1,6 +1,8 @@
 import fs from 'fs/promises';
 
-const basicContent = `# React Playground 🕹️🗒️. To create a new project go to \`/projects\` and run:\n \`npm create vite@latest the-name-of-your-project-folder -- --template react-ts\`` ;
+const basicContent = `# React Playground 🕹️🗒️. 
+
+To create a new project go to \`/projects\` and run:\n \`npm create vite@latest the-name-of-your-project-folder -- --template react-ts\`` ;
 
 
 

@@ -1,4 +1,6 @@
-# React Playground 🕹️🗒️. To create a new project go to `/projects` and run:
+# React Playground 🕹️🗒️. 
+
+To create a new project go to `/projects` and run:
  `npm create vite@latest the-name-of-your-project-folder -- --template react-ts`
 
 - [00-hello-world](./projects/00-hello-world/README.md)
