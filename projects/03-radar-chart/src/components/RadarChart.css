@@ -1,24 +1,69 @@
 .RadarChart {
-    --area-color: rgb(68, 195, 46);
-    --grid-line-color: black;
-    --axis-line-color: var(var(--grid-line-color), black);
 
 
 
-    --grid-bg:gray;
-    --bg:transparent;
 
 
-    --datapoints-color:rgb(85, 85, 129);
-    --polygon-color:rgba(205, 235, 36, 0.629);
+    --chart-container-bg: transparent;
+
+    /* Color of the grid supporting the visualization shapes */
+    --grid-line-color: rgb(176, 176, 176);
+    --grid-bg: transparent;
+
+
+    /* Color of specific elements*/
+    --chart-base-text-color: #d3d3d3;
+    --axis-line-color: var(var(--grid-line-color), blue);
+    /* Labels */
+    --dimension-label-color: var(var(--chart-base-text-color), black);
+    --dimension-label-container-color: rgb(205, 204, 204);
+
+
+
+    /* How the data itself looks */
+    --datapoints-color: rgb(85, 85, 129);
+    --polygon-color: rgba(36, 228, 235, 0.629);
+    --polygon-outline-color: rgba(254, 255, 255, 0.629);
+    --polygon-outline-width: 3px;
 
 
     width: 100%;
     aspect-ratio: 1;
 
-    svg{
-        transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 1s;
+    svg {
+        * {
+            transition: all ease-out 300ms;
+        }
     }
+
+
+
+
+    .data-point {
+        cursor: pointer;
+        transform-box: fill-box; /* Important for svg elems, so that scale occurs from the center of themselves*/ 
+
+    }
+
+    .data-point:hover {
+        fill: white;
+        scale: 1.2;
+    }
+
+
+    /* Little touches to polygon */
+    .radar-polygon {
+        stroke-width: var(--polygon-outline-width, 2px);
+        stroke: var(--polygon-outline-color);
+        transform-origin: center;
+    }
+
+    .radar-polygon:hover {
+        cursor: pointer;
+    }
+
+
+
 
 
 }

@@ -48,7 +48,7 @@ function App() {
   const [selectedRotation, setSelectedRotation] = useState<number>(0)
 
 
-  const [selectedGridType, setGridType] = useState<GraphGridType>("polygonal")
+  const [selectedGridType, setGridType] = useState<GraphGridType>("spherical")
   const [radarShapeTypeActive, setRadarShapeTypeActive] = useState<RadarShapeType>("sharp")
   const [curveConfigurationActive, setCurveConfigurationActive] = useState<keyof typeof d3CurveConfigurations | undefined>(undefined);
 
@@ -64,7 +64,7 @@ function App() {
 
   return (
     <>
-      <h1> D3 Radar Chart</h1>
+      <h1> D3-based Radar Chart by @alreylz</h1>
 
       <section style={{ display: "grid", maxWidth: "80%", margin: "0 auto", gridTemplateColumns: "1fr" }}>
 

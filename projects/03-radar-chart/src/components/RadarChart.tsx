@@ -26,6 +26,7 @@ function drawLine(coordsA: { x: number, y: number }, coordsB: { x: number, y: nu
         .attr("x2", xB)
         .attr("y2", yB)
         .attr("stroke", color);
+
 }
 
 
@@ -69,6 +70,7 @@ function drawPolygon(
             const curvedPathShape = appendTo.
                 append("path")
                 .datum(coordsArray)
+                .attr("class", "radar-polygon")
                 .attr("d", lineGenerator)
                 .attr("fill", config?.fill ?? "var(--polygon-color, yellow )")
                 .attr("stroke", config?.stroke ?? "teal");
@@ -92,6 +94,7 @@ function drawPolygon(
             const polygonShape = appendTo
                 .append("polygon")
                 .attr("points", pointsStringSvg)
+                .attr("class", "radar-polygon")
 
 
             elemShape = polygonShape
@@ -146,7 +149,7 @@ function drawLabel(
     respectToCoords: { x: number, y: number },
     appendTo: D3SvgSelection,
     config = {
-        anchor: "middle", fontSize: 2,
+        anchor: "middle", fontSize: 1.5,
         offsetY: -20,
         className: "graphlabel"
     }
@@ -180,44 +183,8 @@ function drawLabel(
         .attr("width", bbox.width + 16)
         .attr("height", bbox.height + 8)
         .attr("rx", 4)
-        .attr("fill", "white");
-
-
+        .attr("fill", "var(--dimension-label-container-color)")
 }
-
-//TESTING
-//drawLabel("pepe", { x: 100, y: 100 }, d3.select("svg"));
-
-// let svgElem = document.querySelector("svg");
-
-// // Allows inserting circles under the cursor
-// svgElem.addEventListener("click", (event) => {
-//     //get actual bounding box of elem in browser
-//     var svgRect = svgElem.getBoundingClientRect();
-
-//     let cursorInfo = {
-//         x: event.clientX,
-//         y: event.clientY
-//     };
-
-//     let compX = cursorInfo.x - svgRect.x;
-//     let compY = cursorInfo.y - svgRect.y;
-
-//     console.log(`Corrected ${compX} , ${compY}`);
-
-//     d3.select("svg")
-//         .append("circle")
-//         .attr("cx", compX)
-//         .attr("cy", compY)
-//         .attr("r", 10)
-//         .attr("fill", "teal");
-
-//     //console.log(cursorInfo);
-// });
-
-// Trying to create a star graph
-
-
 
 export type GraphGridType = "spherical" | "polygonal"
 export type RadarShapeType = "sharp" | "curved"
@@ -292,7 +259,8 @@ function createRadarGraph(
             .attr("cx", graphConfig.x)
             .attr("cy", graphConfig.y)
             .attr("r", graphConfig.radius)
-            .attr("fill", "var(--grid-bg, gray)");
+            .attr("fill", "var(--grid-bg, gray)")
+            .attr("stroke", "var(--grid-line-color, gray)");
 
         console.log("Graph Background DRAWN");
 
@@ -304,15 +272,15 @@ function createRadarGraph(
                 .attr("cx", graphConfig.x)
                 .attr("cy", graphConfig.y)
                 .attr("r", i * unitLength)
-                .attr("fill", "none")
-                .attr("stroke", "var(--area-color,black)")
+                .attr("fill", "var(--grid-bg, gray)")
+                .attr("stroke", "var(--grid-line-color, gray)");
 
         }
 
     }
 
 
-
+    //OTHER GRAPH LAYERS, to be filled in the following code
     const dataLayer = graphd3Root.append('g').attr('class', 'data-layer')
     const labelLayer = graphd3Root.append('g').attr('class', 'label-layer')
     const polygonLayer = graphd3Root.append('g').attr('class', 'polygon-layer')
@@ -358,7 +326,7 @@ function createRadarGraph(
 
         // Polar coordinates (References of the axes)
         //Endpoints of the axes
-        dataLayer
+        gridLayer
             .append("circle")
             .attr("class", "axis-outerpoint")
             .attr("cx", posX)
@@ -379,16 +347,22 @@ function createRadarGraph(
             .attr("cx", posXDataPoint)
             .attr("cy", posYDataPoint)
             .attr("r", 10)
+            .attr("class", "data-point")
             .attr("fill", "var(--datapoints-color,red)");
 
         polygonData.push({ x: posXDataPoint, y: posYDataPoint });
+
+
+        const correctedXForLabel = graphConfig.x + unitLength * (bounds.max + 1) * Math.cos(newRadians);
+        const correctedYForLabel = graphConfig.y + unitLength * (bounds.max + 1) * Math.sin(newRadians);
+
 
         //Draw each label
         drawLabel(
             k,
             {
-                x: posX + graphConfig.fontSize,
-                y: posY + graphConfig.fontSize
+                x: correctedXForLabel + graphConfig.fontSize,
+                y: correctedYForLabel + graphConfig.fontSize
             },
             labelLayer
         );
@@ -407,7 +381,9 @@ function createRadarGraph(
             curveConfig: config.radarSmoothingConfiguration
         });
 
+    dataLayer.raise()
     labelLayer.raise()
+
 }
 
 
@@ -469,10 +445,16 @@ export default function RadarChart(
     }, [data, graphGridType, radarShapeType, radarSmoothingConfiguration, rotationOffset])
 
 
-    return <div style={{ display: "grid", justifyItems: "center", background: "var(--bg)" }}>
+    return <div
+        className="RadarChart"
+
+        style={{
+            display: "grid", justifyItems: "center",
+            borderRadius: "50%",
+            background: "var(--chart-container-bg, transparent)"
+        }}>
 
         <svg
-            className="RadarChart"
             ref={graphRootRef}
             viewBox="0 0 800 800"
         >
