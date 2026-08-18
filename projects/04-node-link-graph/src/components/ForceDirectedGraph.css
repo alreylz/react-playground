@@ -1,0 +1,10 @@
+.rendered-node{
+    transition:scale 300ms ease-in-out;
+    cursor: pointer;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.rendered-node:hover{
+    scale: 1.4;
+}

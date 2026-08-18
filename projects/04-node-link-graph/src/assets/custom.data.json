@@ -1,0 +1,71 @@
+{
+    "nodes": [
+        {
+            "id": "HCI",
+            "nodeProperties": {
+                "weight": 100
+            }
+        },
+          {
+            "id": "IE",
+            "nodeProperties": {
+                "weight": 30
+            }
+        },
+        {
+            "id": "Datavis",
+            "nodeProperties": {
+                "weight": 30
+            }
+        },
+        {
+            "id": "Multisensory Interfaces",
+            "nodeProperties": {
+                "weight": 100
+            }
+        },
+        {
+            "id": "integration developer",
+            "nodeProperties": {
+                "weight": 40
+            }
+        },
+        {
+            "id": "Empirical research",
+            "nodeProperties": {
+                "weight": 100
+            }
+        }
+    ],
+    "links": [
+        {
+            "source": "HCI",
+            "target": "IE",
+            "value": 100
+        },
+        {
+            "source": "HCI",
+            "target": "Datavis",
+            "value": 60
+
+        },
+        {
+            "source": "HCI",
+            "target": "Multisensory Interfaces",
+            "value": 79
+
+        },
+        {
+            "source": "HCI",
+            "target": "integration developer",
+            "value":700
+            
+        },
+        {
+            "source": "HCI",
+            "target": "Empirical research",
+            "value": 160
+
+        }
+    ]
+}
